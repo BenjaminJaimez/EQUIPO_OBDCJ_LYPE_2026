@@ -1,5 +1,5 @@
-#ifndef PRODUCTO_H
-#define PRODUCTO_H
+#ifndef FECHA_H
+#define FECHA_H
 #include <string>
 using namespace std;
 struct Fecha{

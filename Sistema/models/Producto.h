@@ -1,6 +1,7 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 #include <string>
+#include <iostream>
 #include "Fecha.h"
 using namespace std;
 struct Producto{

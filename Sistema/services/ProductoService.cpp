@@ -2,30 +2,52 @@
 #include <string>
 #include "../models/Producto.h"
 #include "ProductosService.h"
+#include <vector>
 using namespace std;
-const int MAX_PRODUCTOS = 10;
-Producto productos[MAX_PRODUCTOS];
-int contadorProductos = 0;
-void ProductosService::agregarProducto(){
-    if (contadorProductos >= MAX_PRODUCTOS) {
-        cout << "No se pueden agregar más productos." << endl;
+
+void ProductosService::agregarProducto(vector<Producto>& productos){
+    Producto nuevoProducto;
+    cout << "--Registrar nuevo producto--" << endl;
+    cout << "ID aleatorio y unico generado automaticamente: ";
+    nuevoProducto.id = to_string(rand() % 100000); // Genera un ID aleatorio entre 0 y 99999
+    cout << nuevoProducto.id << endl;
+    cout << "Ingrese el nombre del producto: ";
+    getline(cin, nuevoProducto.nombre);
+    cout << "Ingrese el precio del producto: ";
+    cin >> nuevoProducto.precio;
+    cout << "Ingrese la fecha de caducidad (dia mes anio): ";
+    cin >> nuevoProducto.fechaCaducidad.dia >> nuevoProducto.fechaCaducidad.mes >> nuevoProducto.fechaCaducidad.anio;
+    // Aquí podrías agregar el código para guardar el producto en una base de datos o archivo
+    productos.push_back(nuevoProducto);
+    cout << "Producto agregado exitosamente!" << endl;
+}
+void ProductosService::mostrarProductos(const vector<Producto>& productos){
+    if(productos.empty()){
+        cout << "No hay productos registrados." << endl;
         return;
     }
-    Producto producto;
-    cout << "--Registrar nuevo producto--" << endl;
-    cout << "Ingrese el ID del producto: ";
-    cin >> producto[contadorProductos].id;
-    cout << "Ingrese el nombre del producto: ";
-    getline(cin producto[contadorProductos].nombre);
-    cout << "Ingrese la fecha de caducidad (dia mes anio): ";
-    cin >> producto[contadorProductos].fechaCaducidad.dia >> producto[contadorProductos].fechaCaducidad.mes >> producto[contadorProductos].fechaCaducidad.anio;
-    cout << "Ingrese el precio del producto: ";
-    cin >> producto[contadorProductos].precio;
-    // Aquí podrías agregar el código para guardar el producto en una base de datos o archivo
-    cout << "Producto agregado exitosamente!" << endl;
-    contadorProductos++;
-}
-void ProductosService::mostrarProductos(){
     // Aquí podrías agregar el código para leer los productos de una base de datos o archivo
-    cout << "Mostrando productos..." << endl;
+    cout << "Mostrando productos regsitrados..." << endl;
+    for(int i = 0; i < productos.size(); i++){
+        cout << "Producto #" << i + 1 << endl;
+        cout << "ID: " << productos[i].id << endl;
+        cout << "Nombre: " << productos[i].nombre << endl;
+        cout << "Precio: $" << productos[i].precio << endl;
+        cout << "Fecha de caducidad: " << productos[i].fechaCaducidad.dia << "/" 
+             << productos[i].fechaCaducidad.mes << "/" 
+             << productos[i].fechaCaducidad.anio << endl;
+        cout << "-----------------------------" << endl;
+    }
 }
+void ProductosService::eliminarProducto(vector<Producto>& productos, int id){
+        if(productos.empty()){
+            cout << "No hay productos registrados." << endl;
+            return;
+        }
+        if(id < 1 || id > productos.size()){
+            cout << "ID de producto no válido." << endl;
+            return;
+        }
+        productos.erase(productos.begin() + id - 1);
+        cout << "Producto eliminado exitosamente!" << endl;
+    }
