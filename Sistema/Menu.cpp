@@ -19,12 +19,12 @@ string Menu::leerOpcion(int opcion){
     case 1: {
         vector<Producto> productos;
         ProductosService::agregarProducto(productos);
-        return "Agregar producto";
+        break;
     }
     case 2: {
         vector<Producto> productos;
         ProductosService::mostrarProductos(productos);
-        return "Mostrar productos";
+        break;
     }
     case 3: {
         int idProducto;
@@ -32,7 +32,7 @@ string Menu::leerOpcion(int opcion){
         cin >> idProducto;
         vector<Producto> productos;
         ProductosService::eliminarProducto(productos, idProducto);
-        return "Eliminar producto";
+        break;
     }
     case 4:
         return "Salir";
