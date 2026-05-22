@@ -16,24 +16,27 @@ void Menu::mostrar(){
 string Menu::leerOpcion(int opcion){
     switch (opcion)
     {
-    case 1:
-        ProductosService::agregarProducto(*(new vector<Producto>()));
+    case 1: {
+        vector<Producto> productos;
+        ProductosService::agregarProducto(productos);
         return "Agregar producto";
-        break;
-    case 2:
-        ProductosService::mostrarProductos(*(new vector<Producto>()));
+    }
+    case 2: {
+        vector<Producto> productos;
+        ProductosService::mostrarProductos(productos);
         return "Mostrar productos";
-        break;
-    case 3:
-        ProductosService::eliminarProducto(*(new vector<Producto>()));
+    }
+    case 3: {
+        int idProducto;
+        cout << "Ingrese el id del producto a eliminar: ";
+        cin >> idProducto;
+        vector<Producto> productos;
+        ProductosService::eliminarProducto(productos, idProducto);
         return "Eliminar producto";
-        break;
+    }
     case 4:
         return "Salir";
-        break;
-    
     default:
         return "Opcion no valida";
-        break;
     }
 }
