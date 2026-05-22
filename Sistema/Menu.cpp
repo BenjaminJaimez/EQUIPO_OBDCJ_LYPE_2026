@@ -17,12 +17,15 @@ string Menu::leerOpcion(int opcion){
     switch (opcion)
     {
     case 1:
+        ProductosService::agregarProducto(*(new vector<Producto>()));
         return "Agregar producto";
         break;
     case 2:
+        ProductosService::mostrarProductos(*(new vector<Producto>()));
         return "Mostrar productos";
         break;
     case 3:
+        ProductosService::eliminarProducto(*(new vector<Producto>()));
         return "Eliminar producto";
         break;
     case 4:
