@@ -1,7 +1,9 @@
-#include<string>
+#include <string>
 #include <iostream>
-#include <../services/ProductoService.cpp>
+#include "../models/Producto.h"
+#include <vector>
 #include "Menu.h"
+#include "../services/ProductosService.h"
 using namespace std;
 
 void Menu::mostrar(){
@@ -9,10 +11,9 @@ void Menu::mostrar(){
     cout << "1. Agregar producto" << endl;
     cout << "2. Mostrar productos" << endl;
     cout << "3. Eliminar producto" << endl;
-    cout << "Ingrese una opcion: ";
+    cout << "4. Salir" << endl;
 }
-string Menu::leerOpcion(int opcion)
-{
+string Menu::leerOpcion(int opcion){
     switch(opcion){
         case 1:
             return "Agregar producto";
@@ -20,7 +21,9 @@ string Menu::leerOpcion(int opcion)
             return "Mostrar productos";
         case 3:
             return "Eliminar producto";
+        case 4:
+            return "Salir";
         default:
-            return "Opcion no valida";
+            return "Opción no válida";
     }
 }
