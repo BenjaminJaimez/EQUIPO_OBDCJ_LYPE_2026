@@ -10,3 +10,7 @@ void Menu::mostrar(){
     cout << "3. Eliminar producto" << endl;
     cout << "Ingrese una opcion: ";
 }
+string Menu::leerOpcion(int opcion)
+{
+    return string();
+}
