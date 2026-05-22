@@ -1,5 +1,6 @@
 #include<string>
 #include <iostream>
+#include <../services/ProductoService.cpp>
 #include "Menu.h"
 using namespace std;
 
@@ -12,5 +13,14 @@ void Menu::mostrar(){
 }
 string Menu::leerOpcion(int opcion)
 {
-    return string();
+    switch(opcion){
+        case 1:
+            return "Agregar producto";
+        case 2:
+            return "Mostrar productos";
+        case 3:
+            return "Eliminar producto";
+        default:
+            return "Opcion no valida";
+    }
 }
