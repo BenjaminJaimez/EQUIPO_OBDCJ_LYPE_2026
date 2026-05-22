@@ -1,9 +1,8 @@
 #include <string>
 #include <iostream>
-#include "../models/Producto.h"
+#include "Producto.h"
 #include <vector>
 #include "Menu.h"
-#include "../services/ProductosService.h"
 using namespace std;
 
 void Menu::mostrar(){
