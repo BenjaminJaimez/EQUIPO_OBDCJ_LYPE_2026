@@ -11,7 +11,8 @@ void Menu::mostrar(){
     cout << "1. Agregar producto" << endl;
     cout << "2. Mostrar productos" << endl;
     cout << "3. Eliminar producto" << endl;
-    cout << "4. Salir" << endl;
+    cout << "4. Buscar producto por ID" << endl;
+    cout << "5. Salir" << endl;
 }
 string Menu::leerOpcion(int opcion){
     switch (opcion)
@@ -27,14 +28,22 @@ string Menu::leerOpcion(int opcion){
         break;
     }
     case 3: {
-        int idProducto;
+        string idProducto;
         cout << "Ingrese el id del producto a eliminar: ";
         cin >> idProducto;
         vector<Producto> productos;
         ProductosService::eliminarProducto(productos, idProducto);
         break;
     }
-    case 4:
+    case 4: {
+        string idProducto;
+        cout << "Ingrese el id del producto a buscar: ";
+        cin >> idProducto;
+        vector<Producto> productos;
+        ProductosService::buscarProductoId(productos, idProducto);
+        break;
+    }
+    case 5:
         return "Salir";
     default:
         return "Opcion no valida";

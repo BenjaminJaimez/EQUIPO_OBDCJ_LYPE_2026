@@ -52,4 +52,24 @@ void ProductosService::eliminarProducto(vector<Producto>& productos, const strin
         }
     }
     cout << "No se encontró ningún producto con el ID especificado." << endl;
+
+}
+void ProductosService::buscarProductoId(const vector<Producto>& productos, const string id){
+    if(productos.empty()){
+        cout << "No hay productos registrados." << endl;
+        return;
+    }
+    for(int i = 0; i < productos.size(); i++){
+        if(productos[i].id == id){
+            cout << "Producto encontrado!" << endl;
+            cout << "ID: " << productos[i].id << endl;
+            cout << "Nombre: " << productos[i].nombre << endl;
+            cout << "Precio: $" << productos[i].precio << endl;
+            cout << "Fecha de caducidad: " << productos[i].fechaCaducidad.dia << "/" 
+                 << productos[i].fechaCaducidad.mes << "/" 
+                 << productos[i].fechaCaducidad.anio << endl;
+            return;
+        }
+    }
+    cout << "No se encontró ningún producto con el ID especificado." << endl;
 }

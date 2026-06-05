@@ -7,6 +7,7 @@ class ProductosService{
     public:
         static void agregarProducto(vector<Producto>& productos);//CRATE
         static void mostrarProductos(const vector<Producto>& productos);//READ
-        static void eliminarProducto(vector<Producto>& productos, int id);//DELETE
+        static void eliminarProducto(vector<Producto>& productos, const string id);//DELETE
+        static void buscarProductoId(const vector<Producto>& productos, const string id);//READ
 };
 #endif
