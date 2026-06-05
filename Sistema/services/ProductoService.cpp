@@ -39,15 +39,17 @@ void ProductosService::mostrarProductos(const vector<Producto>& productos){
         cout << "-----------------------------" << endl;
     }
 }
-void ProductosService::eliminarProducto(vector<Producto>& productos, int id){
-        if(productos.empty()){
-            cout << "No hay productos registrados." << endl;
-            return;
-        }
-        if(id < 1 || id > productos.size()){
-            cout << "ID de producto no válido." << endl;
-            return;
-        }
-        productos.erase(productos.begin() + id - 1);
-        cout << "Producto eliminado exitosamente!" << endl;
+void ProductosService::eliminarProducto(vector<Producto>& productos, const string id){
+    if(productos.empty()){
+        cout << "No hay productos registrados." << endl;
+        return;
     }
+    for(int i = 0; i < productos.size(); i++){
+        if(productos[i].id == id){
+            productos.erase(productos.begin() + i);
+            cout << "Producto eliminado exitosamente!" << endl;
+            return;
+        }
+    }
+    cout << "No se encontró ningún producto con el ID especificado." << endl;
+}
